@@ -1,5 +1,4 @@
 <?php
-//require_once './home.css';
 include './header/header.php';
 ?>
 
@@ -9,7 +8,7 @@ include './header/header.php';
 <head>
     <meta charset="UTF-8">
     <title>Page principal</title>
-    <link rel="stylesheet" type="text/css" href="css/robeafricaine.css">
+    <link rel="stylesheet" type="text/css" href="./css/home.css">
 
 </head>
 
