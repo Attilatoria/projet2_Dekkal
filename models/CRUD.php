@@ -5,7 +5,7 @@ class Crud
     public function __construct()
     {
         $host = "localhost";
-        $db = "";
+        $db = "ecom2_project";
         $user = "root";
         $password = "";
 
@@ -14,7 +14,7 @@ class Crud
         try {
             $this->connexion = new PDO($dsn, $user, $password);
             if ($this->connexion) {
-                //echo "Connected to the $db database successfully";
+                echo "Connected to the $db database successfully";
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -44,6 +44,20 @@ class Crud
         return $data;
     }
 
+    //methode pour recuperer information de l'utilisateur pour connexion a partir de ecom2_project.user
+    public function getByUsername(string $username, string $password)
+    {
+        $PDOStatement = $this->connexion->prepare("SELECT username, pwd FROM user WHERE username = :username AND pwd = :pwd"); // preparation de rqt sql pour affichage 
+        $PDOStatement->bindParam(':username', $username, PDO::PARAM_STR);
+        $PDOStatement->bindParam(':pwd', $password, PDO::PARAM_STR);
+        $PDOStatement->execute();
+        $data = $PDOStatement->fetch(PDO::FETCH_ASSOC);
+        if ($data) {
+            return true;
+        }
+        return false;
+    }
+
     // methode pour ajouter un item 
     public function add(string $request, array $itemdata): int|bool
     {
@@ -56,10 +70,11 @@ class Crud
             }
         }
         $PDOStatement->execute();
-        if ($PDOStatement->rowCount() <= 0) {
+        if ($PDOStatement) {
+            return $this->connexion->lastInsertId();
+        } else {
             return false;
         }
-        return $this->connexion->lastInsertId();
     }
 
     public function delete(string $table, int $id): string

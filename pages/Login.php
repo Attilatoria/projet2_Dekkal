@@ -1,16 +1,21 @@
 <?php
 include "../models/header.php";
+include_once "../models/Login.php";
+
 headerss();
+
+$connect = new login;
+$conn = $connect->LoginUser();
+
 ?>
-<form>
+<form action="#" method="POST">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Username</label>
-        <input type="text" class="form-control" id="exampleInputUsername">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <input type="text" class="form-control" id="username" name="username">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input type="password" class="form-control" id="pwd" name="pwd">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>

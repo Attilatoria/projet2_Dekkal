@@ -1,0 +1,14 @@
+.card {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-img-top {
+    width: 300px;
+    height: 400px;
+}
