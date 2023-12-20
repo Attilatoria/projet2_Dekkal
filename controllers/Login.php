@@ -1,17 +1,25 @@
 <?php
 require_once "../models/CRUD.php";
-class login extends Crud
+
+class Login extends Crud
 {
-    public function LoginUser()
+    public function loginUser()
     {
         if (isset($_POST['submit'])) {
             $username = $_POST['username'];
             $password = $_POST['pwd'];
+            
 
             try {
-                $conn = $this->getByUsername($username, $password);
-                if ($conn) {
+                $user = $this->getByUsername($username, $password);
+
+                if ($user != false) {
+
+                    // Rediriger vers la page VetementFemme.php
                     header("Location: ../pages/VetementFemme.php");
+                    
+                } else {
+                    echo 'console.error("Nom d\'utilisateur ou mot de passe incorrect")';
                 }
             } catch (PDOException $e) {
                 echo 'console.error("PDOException: ' . $e->getMessage() . '")';
@@ -19,3 +27,4 @@ class login extends Crud
         }
     }
 }
+?>

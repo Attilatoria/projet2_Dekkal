@@ -1,3 +1,7 @@
+<?php
+include '../models/headerUser.php';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -13,7 +17,7 @@
         include '../models/data.femme.inc.php';
         $dbImageData = getProductsData();
         $imageContainer = '';
-        foreach ($image as $img) {
+        foreach ($images as $img) {
             $dbImage = array_filter($dbImageData, function ($dbImg) use ($img) {
                 return $dbImg['id'] == $img['id'];
             });
@@ -29,9 +33,7 @@
             <div class="card-body">
                 <h5 class="card-title">' . $img['titre'] . '</h5>
                 <p class="card-text">' . $img['description'] . '</p>
-                <button type="submit" name="ajouter" id="ajouter' . $img['id'] . '" class="btn btn-info" value="' . $img['id'] . '"><img id="cart" src="./media/cart.png" /></button>    
                 <button type="button" class="btn btn-warning price">' . $img['prix'] . '</button>         
-                <a href="detailimage.php?id=' . $img['id'] . '" class="btn btn-info" id="Details">Details</a>
             </div>
         </div>';
         }

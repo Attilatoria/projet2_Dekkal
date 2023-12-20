@@ -1,0 +1,8 @@
+.addproduit{
+    position: relative;
+    margin: auto;
+    left: 150px;
+    border: 2px solid black;
+    display: block;
+    width: 300px;
+}

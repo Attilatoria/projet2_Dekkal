@@ -1,6 +1,7 @@
 <?php
 class Crud
 {
+    public $userId;
     public $connexion;
     public function __construct()
     {
@@ -53,7 +54,9 @@ class Crud
         $PDOStatement->execute();
         $data = $PDOStatement->fetch(PDO::FETCH_ASSOC);
         if ($data) {
-            return true;
+            session_start();
+            $userId = $_SESSION['user']['id'];
+            return $data;
         }
         return false;
     }
@@ -102,6 +105,9 @@ class Crud
             return "Élément introuvable";
         }
     }
+
+
+   
 
     public function __destruct()
     {
