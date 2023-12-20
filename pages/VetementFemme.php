@@ -33,7 +33,7 @@ include '../models/headerUser.php';
             <div class="card-body">
                 <h5 class="card-title">' . $img['titre'] . '</h5>
                 <p class="card-text">' . $img['description'] . '</p>
-                <button type="button" class="btn btn-warning price">' . $img['prix'] . '</button>         
+                <button type="button" class="btn btn-warning price">' . $img['prix'] . '$</button>         
             </div>
         </div>';
         }

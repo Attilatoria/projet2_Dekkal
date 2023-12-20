@@ -1,5 +1,5 @@
-<?php
-require_once "../models/CRUD.php";
+<?php 
+include '../models/CRUD.php';
 
 class Login extends Crud
 {
@@ -8,16 +8,25 @@ class Login extends Crud
         if (isset($_POST['submit'])) {
             $username = $_POST['username'];
             $password = $_POST['pwd'];
-            
 
             try {
                 $user = $this->getByUsername($username, $password);
 
-                if ($user != false) {
+                if ($user !== false) {
+                    // Stocker l'ID de l'utilisateur dans la session
+                    session_start();
+                    $_SESSION['userId'] = $user['id'];
 
-                    // Rediriger vers la page VetementFemme.php
-                    header("Location: ../pages/VetementFemme.php");
-                    
+                    // Vérifier le rôle de l'utilisateur
+                    if ($user['role_id'] == 1) {
+                        // Rediriger vers la page AddProducts.php
+                        header("Location: ../pages/AddProducts.php");
+                        exit();
+                    } else {
+                        // Rediriger vers une autre page si nécessaire
+                        header("Location: ../pages/VetementFemme.php");
+                        exit();
+                    }
                 } else {
                     echo 'console.error("Nom d\'utilisateur ou mot de passe incorrect")';
                 }

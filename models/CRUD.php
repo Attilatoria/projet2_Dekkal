@@ -48,14 +48,14 @@ class Crud
     //methode pour recuperer information de l'utilisateur pour connexion a partir de ecom2_project.user
     public function getByUsername(string $username, string $password)
     {
-        $PDOStatement = $this->connexion->prepare("SELECT username, pwd FROM user WHERE username = :username AND pwd = :pwd"); // preparation de rqt sql pour affichage 
+        $PDOStatement = $this->connexion->prepare("SELECT username, pwd, id, role_id FROM user WHERE username = :username AND pwd = :pwd"); // preparation de rqt sql pour affichage 
         $PDOStatement->bindParam(':username', $username, PDO::PARAM_STR);
         $PDOStatement->bindParam(':pwd', $password, PDO::PARAM_STR);
         $PDOStatement->execute();
         $data = $PDOStatement->fetch(PDO::FETCH_ASSOC);
         if ($data) {
             session_start();
-            $userId = $_SESSION['user']['id'];
+            $_SESSION['userId'] = $data['id'];
             return $data;
         }
         return false;
