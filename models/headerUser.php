@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" href="../pages/InfoPersonnel.php">Infos personnel</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Panier</a>
+          <a class="nav-link" href="../pages/Panier.php">Panier</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../pages/Login.php">Exit</a>

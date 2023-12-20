@@ -13,7 +13,6 @@ class Login extends Crud
                 $user = $this->getByUsername($username, $password);
 
                 if ($user !== false) {
-                    // Stocker l'ID de l'utilisateur dans la session
                     session_start();
                     $_SESSION['userId'] = $user['id'];
 
