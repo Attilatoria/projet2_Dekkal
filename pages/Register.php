@@ -1,6 +1,6 @@
 <?php
 include "../models/header.php";
-include_once "../models/RegisterFunction.php";
+include_once "../controllers/RegisterFunction.php";
 require_once "../models/CRUD.php";
 
 $Connect = new Crud;

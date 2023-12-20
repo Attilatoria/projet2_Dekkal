@@ -11,7 +11,7 @@ class login extends Crud
             try {
                 $conn = $this->getByUsername($username, $password);
                 if ($conn) {
-                    echo 'hello user : ' . $username . '';
+                    header("Location: ../pages/VetementFemme.php");
                 }
             } catch (PDOException $e) {
                 echo 'console.error("PDOException: ' . $e->getMessage() . '")';
